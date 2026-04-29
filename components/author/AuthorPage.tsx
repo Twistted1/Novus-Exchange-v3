@@ -1,18 +1,39 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Author, Article } from '../../types';
 import GlassCard from '../GlassCard';
 import ArticleCard from '../articles/ArticleCard';
 
 interface AuthorPageProps {
+  /** The author to display */
   author: Author;
+  /** List of articles written by this author */
   articles: Article[];
+  /** Callback to navigate back to the previous view */
   onBack: () => void;
+  /** Callback when an article is clicked */
   onSelectArticle: (article: Article) => void;
 }
 
+/**
+ * AuthorPage Component
+ * 
+ * Displays an author's profile including their avatar, name, and biography.
+ * Below the profile, it lists all articles written by the author.
+ * Includes SEO metadata specific to the author via react-helmet-async.
+ */
 const AuthorPage: React.FC<AuthorPageProps> = ({ author, articles, onBack, onSelectArticle }) => {
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8 pt-32 pb-24 sm:pb-32 page-transition-wrapper snap-start">
+      <Helmet>
+        <title>{author.name} | Novus Authors</title>
+        <meta name="description" content={`Read articles by ${author.name}. ${author.bio}`} />
+        <meta property="og:title" content={`${author.name} | Novus Authors`} />
+        <meta property="og:description" content={`Read articles by ${author.name}. ${author.bio}`} />
+        <meta property="og:image" content={author.avatarUrl} />
+        <meta property="og:type" content="profile" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <GlassCard className="max-w-4xl mx-auto mb-12">
         <button onClick={onBack} className="mb-8 text-sm font-semibold text-white hover:underline flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

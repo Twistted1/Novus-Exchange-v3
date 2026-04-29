@@ -11,12 +11,17 @@
   },
   "dependencies": {
     "@google/genai": "0.15.0",
+    "@sentry/browser": "^10.49.0",
+    "@sentry/react": "^10.49.0",
     "@supabase/supabase-js": "^2.99.2",
     "@vercel/node": "^5.3.26",
     "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-helmet-async": "^3.0.0",
     "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.14.0",
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {

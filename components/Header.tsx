@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Page } from '../types';
+import LogoIcon from './LogoIcon';
 
 interface NavLinkProps {
   page: Page;
@@ -47,7 +48,6 @@ const Header: React.FC<HeaderProps> = ({ activePage, onNavClick, searchQuery, on
     { label: 'Articles', page: Page.Articles },
     { label: 'Trending', page: Page.GlobalTrending },
     { label: 'Solutions', page: Page.Ecosystem }, 
-    { label: 'Contact', page: Page.Contact },
   ];
 
   return (
@@ -55,19 +55,7 @@ const Header: React.FC<HeaderProps> = ({ activePage, onNavClick, searchQuery, on
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
         {/* Logo Left */}
         <button onClick={() => onNavClick(Page.Home)} className="flex items-center space-x-3 group">
-          <img 
-            src="/logo.png" 
-            alt="Novus Exchange" 
-            className="h-10 w-auto object-contain"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
-            }}
-          />
-          <svg className="h-6 w-6 text-white hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span className="text-white font-black text-xl tracking-tight uppercase group-hover:text-gray-300 transition-colors">Novus Exchange</span>
+          <LogoIcon size="md" className="group-hover:scale-105 transition-transform" />
         </button>
         
         {/* Nav & Search Right */}

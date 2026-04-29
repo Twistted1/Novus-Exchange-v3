@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GlassCard from './GlassCard';
+import { getLatestPodcastEpisode } from '../api/cms';
+import { PodcastEpisode } from '../types';
 
 const About: React.FC = () => {
-  const videoId = 'cB2BENj1jaw';
+  const [latestPodcast, setLatestPodcast] = useState<PodcastEpisode | null>(null);
+
+  useEffect(() => {
+    const fetchPodcast = async () => {
+      const ep = await getLatestPodcastEpisode();
+      setLatestPodcast(ep);
+    };
+    fetchPodcast();
+  }, []);
   
   return (
     <div className="w-full max-w-5xl mx-auto">
@@ -35,26 +45,43 @@ const About: React.FC = () => {
             </div>
           </div>
           
-          {/* Right Video Column (65%) */}
-          <div className="bg-black relative aspect-video md:aspect-auto overflow-hidden">
-            <iframe
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&enablejsapi=1&playsinline=1`}
-              title="Novus Exchange Mission"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          {/* Right Podcast Column (65%) */}
+          <div className="bg-black relative aspect-video md:aspect-auto overflow-hidden group cursor-pointer">
+            <img 
+              src={latestPodcast?.thumbnailUrl || "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2070&auto=format&fit=crop"} 
+              alt="Podcast Episode" 
+              className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
+            />
             
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+            
+            {/* Play Button Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+
             {/* Context Overlay */}
             <div className="absolute top-6 right-6 z-10">
               <div className="bg-black/70 backdrop-blur-md border border-white/10 px-4 py-2 rounded-md flex items-center gap-3">
-                <span className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Live Feed</span>
+                <span className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Signal Active</span>
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
               </div>
+            </div>
+
+            {/* Info Overlay */}
+            <div className="absolute bottom-6 left-8 right-8">
+              <div className="flex px-2 py-0.5 bg-red-600/20 border border-red-500/30 w-fit rounded-sm mb-2">
+                <span className="text-[9px] font-black text-red-500 uppercase tracking-widest leading-none py-1">Podcast // Season {latestPodcast?.season || "4"}</span>
+              </div>
+              <h4 className="text-xl font-black text-white uppercase tracking-tight mb-1">The Standard: Unfiltered</h4>
+              <p className="text-gray-400 text-xs font-mono uppercase tracking-widest">Listen to the latest episode: {latestPodcast?.episodeNumber?.toString().padStart(3, '0') || "042"} // {latestPodcast?.title || "Decoding Power"}</p>
             </div>
           </div>
         </div>

@@ -4,50 +4,48 @@ import React from 'react';
 const socialLinks = [
   { 
     name: 'YouTube', 
+    handle: '@NovusExchange',
     href: 'https://www.youtube.com/@NovusExchange', 
     colorClass: 'text-[#FF0000]',
     icon: <svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
   },
-  {
-    name: 'TikTok',
-    href: 'https://tiktok.com/@novusexchange',
-    colorClass: 'text-white',
-    icon: <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.23-.9 4.4-2.33 6.06-1.43 1.66-3.46 2.72-5.64 3.01-2.18.29-4.43-.02-6.38-1.11-1.95-1.09-3.46-2.82-4.22-4.9-.76-2.08-.75-4.39.03-6.46.78-2.07 2.3-3.79 4.26-4.87 1.96-1.08 4.21-1.38 6.38-.85v4.07c-1.16-.34-2.4-.29-3.52.15-1.12.44-2.09 1.24-2.69 2.27-.6 1.03-.81 2.27-.58 3.44.23 1.17.89 2.21 1.84 2.91.95.7 2.16 1.01 3.34.86 1.18-.15 2.28-.73 3.04-1.61.76-.88 1.18-2.05 1.17-3.24-.02-3.83-.01-7.66-.01-11.49z"/></svg>
-  },
   { 
     name: 'X (Twitter)', 
+    handle: '@novusexchange',
     href: 'https://x.com/novusexchange', 
     colorClass: 'text-white',
     icon: <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
   },
   {
     name: 'Instagram',
+    handle: '@novusexchange',
     href: 'https://instagram.com/novusexchange',
     colorClass: 'text-[#E1306C]',
     icon: <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-  },
-  {
-    name: 'Rumble',
-    href: 'https://rumble.com/c/NovusExchange',
-    colorClass: 'text-[#85D633]',
-    icon: <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21.503 12.002c0 5.248-4.253 9.501-9.501 9.501s-9.501-4.253-9.501-9.501 4.253-9.501 9.501-9.501 9.501 4.253 9.501 9.501zm-12.75 4.501l6.5-4.501-6.5-4.501v9.002z"/></svg>
-  }
+   }
 ];
 
+/**
+ * SocialLinks Component
+ * 
+ * Renders a row of social media icons with links to the respective platforms.
+ * It uses an array of configuration objects to define the name, URL, color, 
+ * and SVG icon for each social network.
+ */
 const SocialLinks: React.FC = () => {
   return (
-    <div className="flex justify-center space-x-6">
+    <div className="flex flex-wrap justify-center gap-6">
       {socialLinks.map(link => (
         <a 
           key={link.name} 
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
+          title={`${link.name}: ${link.handle}`}
           aria-label={`Follow us on ${link.name}`}
-          className={`${link.colorClass} hover:opacity-80 transition-all duration-300 transform hover:scale-110 active:scale-95`}
+          className={`flex items-center gap-2 ${link.colorClass} hover:opacity-80 transition-all duration-300 transform hover:scale-110 active:scale-95`}
         >
-          <span className="sr-only">{link.name}</span>
-          <div className="w-6 h-6 flex items-center justify-center">{link.icon}</div>
+          <div className="w-6 h-6 flex items-center justify-center drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]">{link.icon}</div>
         </a>
       ))}
     </div>

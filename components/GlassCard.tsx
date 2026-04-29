@@ -1,11 +1,19 @@
 import React, { useRef, useEffect } from 'react';
 
-// FIX: Extend props with React.HTMLAttributes to allow passing standard div props like onClick.
 interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** The content to be rendered inside the card */
   children: React.ReactNode;
+  /** Optional additional CSS classes to apply to the card */
   className?: string;
 }
 
+/**
+ * GlassCard Component
+ * 
+ * A reusable card component with a "glassmorphism" visual style. It features 
+ * a translucent background, backdrop blur, and an interactive hover effect 
+ * that tracks the mouse position using CSS variables.
+ */
 const GlassCard: React.FC<GlassCardProps> = ({ children, className, ...rest }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 

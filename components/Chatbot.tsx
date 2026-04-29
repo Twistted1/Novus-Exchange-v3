@@ -4,12 +4,23 @@ import { NovusMessage } from '../types';
 import { renderMarkdown } from '../utils';
 
 interface ChatbotProps {
+    /** Whether the chatbot window is currently open */
     isOpen: boolean;
+    /** Function to toggle the chatbot window's open state */
     setIsOpen: (isOpen: boolean) => void;
+    /** Array of messages to display in the chat window */
     messages: NovusMessage[];
+    /** Callback function triggered when the user sends a message */
     onSendMessage: (message: string) => void;
 }
 
+/**
+ * Chatbot Component
+ * 
+ * Renders a floating chatbot interface that allows users to interact with the 
+ * Novus Assistant. It includes a toggle button, a message history view, and 
+ * an input field for sending new messages.
+ */
 const Chatbot: React.FC<ChatbotProps> = ({ isOpen, setIsOpen, messages, onSendMessage }) => {
     const [userInput, setUserInput] = useState('');
     const chatBodyRef = useRef<HTMLDivElement | null>(null);
@@ -32,14 +43,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, setIsOpen, messages, onSendMe
         <>
             {/* Chat Window */}
             <div
-                className={`fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] max-w-[320px] h-[85vh] max-h-[800px] z-40 transition-all duration-500 ${
+                className={`fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] max-w-[320px] h-[85vh] max-h-[800px] z-[9998] transition-all duration-500 ${
                 isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none'
                 }`}
             >
                 <GlassCard className="h-full flex flex-col p-0 overflow-hidden !border-white/15 !bg-black/95 !shadow-2xl">
                     <div className="flex items-center justify-between p-5 border-b border-white/10 shrink-0 bg-white/5">
                         <div className="flex items-center gap-3">
-                           <svg className="w-6 h-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                            <div className="flex flex-col gap-0.5 scale-75">
+                                <div className="w-5 h-1.5 bg-red-600 rounded-sm" />
+                                <div className="w-5 h-1.5 bg-white rounded-sm" />
+                                <div className="w-5 h-1.5 bg-gray-500 rounded-sm" />
+                            </div>
                             <h3 className="text-sm font-bold text-white uppercase tracking-widest">Novus Assistant</h3>
                         </div>
                         <button
@@ -54,8 +69,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, setIsOpen, messages, onSendMe
                         {messages.map((msg) => (
                              <div key={msg.id} className={`flex items-start gap-4 ${msg.source === 'user' ? 'justify-end' : ''}`}>
                                 {msg.source === 'model' && (
-                                    <div className="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0 border border-cyan-500/20">
-                                       <svg className="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+                                        <div className="flex flex-col gap-0.5 scale-[0.6]">
+                                            <div className="w-4 h-1 bg-red-600 rounded-sm" />
+                                            <div className="w-4 h-1 bg-white rounded-sm" />
+                                            <div className="w-4 h-1 bg-gray-500 rounded-sm" />
+                                        </div>
                                     </div>
                                 )}
                                 <div className={`p-4 rounded-2xl max-w-[85%] ${msg.source === 'user' ? 'bg-red-600/30 border border-red-500/30' : 'bg-white/10 border border-white/10'}`}>
@@ -78,7 +97,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, setIsOpen, messages, onSendMe
                             <input
                                 value={userInput}
                                 onChange={(e) => setUserInput(e.target.value)}
-                                placeholder="ASK ANYTHING..."
+                                placeholder="HOW CAN I HELP?"
                                 className="flex-grow bg-transparent py-2.5 px-3 text-sm text-white focus:outline-none uppercase tracking-widest placeholder:text-gray-600"
                             />
                             <button type="submit" className="p-2.5 text-white bg-red-600 hover:bg-red-700 rounded-md transition-all disabled:opacity-20" disabled={!userInput.trim()}>
@@ -92,7 +111,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, setIsOpen, messages, onSendMe
             {/* Main Floating Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none ring-offset-black focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none ring-offset-black focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                 aria-label="Chat"
             >
                 {isOpen ? (

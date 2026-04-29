@@ -4,7 +4,6 @@ export enum Page {
   Articles = 'articles',
   GlobalTrending = 'trending',
   Ecosystem = 'ecosystem',
-  Contact = 'contact',
   Author = 'Author', // Internal page, not in nav
   Article = 'Article', // Internal page, not in nav
 }
@@ -22,10 +21,37 @@ export interface Article {
   excerpt: string;
   content: string;
   imageUrl: string;
-  category: 'Economic Insights' | 'Political Commentary' | 'Social Responsibility';
+  category: string;
   author: Author;
   date: string;
   readTime: number; // in minutes
+  tags: string[];
+  sourceUrl?: string;
+}
+
+export interface Broadcast {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  videoUrl?: string; // For the video podcast output
+  audioUrl?: string; // For the audio podcast output
+  thumbnailUrl: string;
+  tags: string[];
+  duration: string;
+  schedule: string; // e.g., "MON-WED-SAT"
+}
+
+export interface PodcastEpisode {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  episodeNumber: number;
+  season: number;
+  audioUrl: string;
+  thumbnailUrl: string;
+  duration: string;
   tags: string[];
 }
 
